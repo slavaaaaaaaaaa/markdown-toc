@@ -191,7 +191,7 @@ function linkify(tok, options) {
     if (opts && typeof opts.linkify === 'function') {
       return opts.linkify(tok, text, slug, opts);
     }
-    tok.content = utils.mdlink(text, '#' + slug);
+    tok.content = utils.mdlink(text, '#' + opts.prepend + slug);
   }
   return tok;
 }

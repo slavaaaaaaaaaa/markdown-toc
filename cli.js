@@ -5,7 +5,7 @@ var toc = require('./index.js');
 var utils = require('./lib/utils');
 var args = utils.minimist(process.argv.slice(2), {
   boolean: ['i', 'json', 'firsth1', 'stripHeadingTags'],
-  string: ['append', 'bullets', 'indent'],
+  string: ['append', 'bullets', 'indent', 'prepend'],
   default: {
     firsth1: true,
     stripHeadingTags: true
@@ -26,6 +26,8 @@ if (args._.length !== 1) {
     '',
     '  --append:     Append a string to the end of the TOC',
     '',
+    '  --prepend <prefix>: Prepend a string to the beginning of each link (e.g. for BitBucket "Markdown")',
+    '',
     '  --bullets:    Bullets to use for items in the generated TOC',
     '                (Supports multiple bullets: --bullets "*" --bullets "-" --bullets "+")',
     '                (Default is "*".)',
@@ -37,7 +39,7 @@ if (args._.length !== 1) {
     '',
     '  --no-stripHeadingTags: Do not strip extraneous HTML tags from heading',
     '                         text before slugifying',
-    '',  
+    '',
     '  --indent:     Provide the indentation to use - defaults to \'  \'',
     '                (to specify a tab, use the bash-escaped $\'\\t\')'
   ].join('\n'));
